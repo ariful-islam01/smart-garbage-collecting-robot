@@ -26,11 +26,11 @@ int distance;
 #define speed 120
 
 bool automaticMode = false;   // auto flag
-bool ultrasonicEnabled = true; // ultrasonic on/off (routine এ off থাকবে)
+bool ultrasonicEnabled = true; // ultrasonic on/off
 
 // ---------- Smooth servo params ----------
-const int SERVO_STEP_DEG = 2;  // প্রতি ধাপে ডিগ্রি
-const int SERVO_STEP_MS  = 8;  // প্রতিটি ধাপের delay(ms)
+const int SERVO_STEP_DEG = 2;  
+const int SERVO_STEP_MS  = 8; 
 
 // ---------- Motor helpers ----------
 void stopmotor() {
@@ -63,13 +63,11 @@ void ultrasonicOn() {
 }
 void ultrasonicOff() {
   ultrasonicEnabled = false;
-  // ট্রিগার লো করে দিয়ে ইনপুটে রাখছি (মাপা হবে না)
   digitalWrite(trigPin, LOW);
   pinMode(trigPin, INPUT);
   pinMode(echoPin, INPUT);
 }
 
-// Distance measure (cm); ultrasonic off হলে 0 রিটার্ন করবে
 void measureDistance() {
   if (!ultrasonicEnabled) { distance = 0; return; }
 
@@ -102,14 +100,13 @@ void moveServoSmooth(void (*writer)(int), int* current, int target, int step=SER
   }
 }
 // --- Slow servo moves with for loop and delay ---
-// target এ ধীরে ধীরে যাওয়া হবে
 
 void baseTo(int target) {
   target = constrain(target, 0, 180);
   if (baseAngle < target) {
     for (int a = baseAngle; a <= target; a++) {
       baseServo.write(a);
-      delay(20);   // প্রতিটি ধাপে delay, slow effect
+      delay(20);  
     }
   } else {
     for (int a = baseAngle; a >= target; a--) {
@@ -117,7 +114,7 @@ void baseTo(int target) {
       delay(20);
     }
   }
-  baseAngle = target; // শেষ অবস্থাটা ধরে রাখি
+  baseAngle = target;
 }
 
 void shoulderTo(int target) {
@@ -175,7 +172,6 @@ void handleObstacleRoutine() {
   ultrasonicOff();
   stopmotor();
 
-  // সিকোয়েন্স (সবগুলো slowly):
   // gripper -> 20°
   gripperTo(20);
   // shoulder -> 180°
@@ -236,11 +232,10 @@ void loop() {
   if (automaticMode) {
     measureDistance();
     if (distance > 10 || distance == 0) {
-      forward();                                   // তোমার আগের মতোই continuous forward
+      forward();                                 
     } else {
       stopmotor();
-      handleObstacleRoutine();                     // ← তোমার চাওয়া সিকোয়েন্স
-      // তারপর লুপে ফিরে আবার স্বাভাবিকভাবে চলবে
+      handleObstacleRoutine();                
     }
   }
 }
