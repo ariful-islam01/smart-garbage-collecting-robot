@@ -3,8 +3,7 @@
 [![Arduino](https://img.shields.io/badge/Arduino-Uno-blue?logo=arduino)](https://www.arduino.cc/)  
 [![ESP32-CAM](https://img.shields.io/badge/ESP32-CAM-orange?logo=espressif)](https://www.espressif.com/)  
 [![Flutter](https://img.shields.io/badge/Flutter-Mobile%20App-02569B?logo=flutter)](https://flutter.dev/)  
-[![IoT](https://img.shields.io/badge/IoT-Robotics-green)]()  
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+[![IoT](https://img.shields.io/badge/IoT-Robotics-green)]() 
 
 A **Smart Garbage Collecting Robot** built with **Arduino Uno** and **ESP32-CAM (Bluetooth)** for wireless control.  
 The robot supports **manual, automatic, and voice control modes**, detects obstacles using **HC-SR04 ultrasonic sensor**, and features a **4-DOF servo robotic arm** for grabbing and disposing of objects. A custom **Flutter mobile app** provides seamless control with live servo angle display and theme toggle.  
