@@ -48,7 +48,7 @@ smart-garbage-collecting-robot/
 │── robotController/
 │ └── lib/main.dart
 │── proteus-design/
-│ └── schematic.pdsprj
+│ └── schematic.png
 │── images/
 │ └── app-ui.png
 │ └── robot-photo.jpg
